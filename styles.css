@@ -1,0 +1,769 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap');
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(-45deg, #e3f2fd, #f3e5f5, #fff3e0, #e8f5e8, #fce4ec, #e3f2fd);
+    background-size: 400% 400%;
+    animation: gradientShift 25s ease infinite;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fondo animado dinámico más suave */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Partículas flotantes de corazones mejoradas */
+.floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    font-size: clamp(18px, 2.5vw, 28px);
+    animation: float 10s infinite ease-in-out;
+    filter: drop-shadow(0 0 8px rgba(255, 192, 203, 0.6));
+}
+
+.heart:nth-child(odd) { color: rgba(255, 105, 180, 0.9); }
+.heart:nth-child(even) { color: rgba(255, 182, 193, 0.8); }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(100vh) rotate(0deg) scale(0.6);
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    50% {
+        transform: translateY(-30vh) rotate(360deg) scale(1.3);
+        opacity: 1;
+    }
+}
+
+/* Partículas flotantes de gatitos */
+.floating-kittens {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.kitten {
+    position: absolute;
+    font-size: clamp(20px, 3vw, 32px);
+    animation: floatKitten 12s infinite ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(144, 238, 144, 0.7));
+}
+
+@keyframes floatKitten {
+    0%, 100% {
+        transform: translateY(100vh) rotate(0deg) scale(0.7);
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    50% {
+        transform: translateY(-40vh) rotate(-180deg) scale(1.4);
+        opacity: 1;
+    }
+}
+
+/* Estrellas de fondo más románticas */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: linear-gradient(45deg, #fff, #ffd700);
+    border-radius: 50%;
+    animation: twinkle 4s infinite ease-in-out;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.8); }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: clamp(15px, 5vw, 40px);
+    position: relative;
+    z-index: 2;
+    gap: clamp(30px, 6vw, 50px);
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3rem, 9vw, 5rem);
+    color: #4caf50;
+    text-align: center;
+    text-shadow: 4px 4px 12px rgba(0,0,0,0.1), 0 0 25px rgba(76, 175, 80, 0.5);
+    animation: fadeInDown 2s ease-out, titleGlow 4s ease-in-out infinite alternate;
+    margin-bottom: clamp(25px, 4vw, 35px);
+}
+
+@keyframes titleGlow {
+    from { text-shadow: 4px 4px 12px rgba(0,0,0,0.1), 0 0 20px rgba(76, 175, 80, 0.4); }
+    to { text-shadow: 4px 4px 12px rgba(0,0,0,0.1), 0 0 40px rgba(76, 175, 80, 0.7); }
+}
+
+/* CONTENEDOR DE MÚLTIPLES GIRASOLES DISPERSOS */
+.sunflowers-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: clamp(20px, 4vw, 40px);
+    margin: clamp(30px, 6vw, 50px) 0;
+    position: relative;
+    flex-wrap: wrap;
+    animation: fadeInUp 2.5s ease-out;
+}
+
+/* ANIMACIÓN DE FORMACIÓN MEJORADA */
+@keyframes formPetal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -85%) rotate(var(--rotation)) scale(0) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -85%) rotate(var(--rotation)) scale(1) translateY(0);
+    }
+}
+
+@keyframes formStem {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scaleY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scaleY(1);
+    }
+}
+
+@keyframes formLeaf {
+    0% {
+        opacity: 0;
+        transform: rotate(var(--rotation)) scale(0) translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(var(--rotation)) scale(1) translateX(0);
+    }
+}
+
+@keyframes formCenter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes gentleSway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+/* GIRASOL MEJORADO CON COLORES MÁS VIBRANTES */
+.sunflower-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: gentleSway 7s ease-in-out infinite, fadeInUp 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.sunflower-container:nth-child(1) { animation-delay: 0.5s; transform: translateY(10px); }
+.sunflower-container:nth-child(2) { animation-delay: 0.8s; transform: translateY(-5px); }
+.sunflower-container:nth-child(3) { animation-delay: 1.1s; transform: translateY(15px); }
+
+.sunflower {
+    position: relative;
+    width: clamp(160px, 25vw, 260px);
+    height: clamp(160px, 25vw, 260px);
+    animation: gentleSway 7s ease-in-out infinite;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+}
+
+.sunflower:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 15px 40px rgba(0,0,0,0.2));
+}
+
+/* Centro del girasol con más detalle */
+.flower-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(45px, 8vw, 75px);
+    height: clamp(45px, 8vw, 75px);
+    background: radial-gradient(circle at 30% 30%, #a67c52 0%, #8b4513 30%, #654321 60%, #4a2c0d 100%);
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 
+        inset 0 0 clamp(15px, 3vw, 25px) rgba(0,0,0,0.3),
+        0 3px clamp(8px, 1.5vw, 12px) rgba(0,0,0,0.2),
+        0 0 20px rgba(255, 215, 0, 0.3);
+    position: relative;
+    animation: formCenter 1.2s ease-out forwards;
+    opacity: 0;
+    animation-delay: 2.5s;
+}
+
+.flower-center::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle at 25% 25%, #8b4513 0%, #654321 50%, #3d2000 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 clamp(8px, 1.5vw, 12px) rgba(0,0,0,0.4);
+}
+
+.flower-center::after {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    background: #2a0f00;
+    border-radius: 50%;
+    box-shadow: inset 0 0 clamp(4px, 0.8vw, 6px) rgba(255,255,255,0.15);
+}
+
+/* Pétalos con gradientes más románticos y dorados */
+.petals-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.petal {
+    position: absolute;
+    width: clamp(32px, 6vw, 50px);
+    height: clamp(64px, 12vw, 100px);
+    background: linear-gradient(
+        45deg, 
+        #ffed4e 0%, 
+        #ffcc02 25%, 
+        #ff9900 50%, 
+        #ffaa00 75%, 
+        #ffed4e 100%
+    );
+    border-radius: 85% 85% 15% 15%;
+    transform-origin: 50% 85%;
+    box-shadow: 
+        0 clamp(2px, 0.5vw, 4px) clamp(10px, 2vw, 18px) rgba(0,0,0,0.15),
+        inset 0 clamp(1px, 0.3vw, 2px) clamp(4px, 0.8vw, 7px) rgba(255,255,255,0.4);
+    transition: all 0.4s ease;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    animation: formPetal 1s ease-out forwards;
+}
+
+/* Posicionamiento y delays estaggered para cada pétalo */
+.petal:nth-child(1) { --rotation: 0deg; animation-delay: 1.2s; }
+.petal:nth-child(2) { --rotation: 25.7deg; animation-delay: 1.3s; }
+.petal:nth-child(3) { --rotation: 51.4deg; animation-delay: 1.4s; }
+.petal:nth-child(4) { --rotation: 77.1deg; animation-delay: 1.5s; }
+.petal:nth-child(5) { --rotation: 102.8deg; animation-delay: 1.6s; }
+.petal:nth-child(6) { --rotation: 128.5deg; animation-delay: 1.7s; }
+.petal:nth-child(7) { --rotation: 154.2deg; animation-delay: 1.8s; }
+.petal:nth-child(8) { --rotation: 179.9deg; animation-delay: 1.9s; }
+.petal:nth-child(9) { --rotation: 205.6deg; animation-delay: 2s; }
+.petal:nth-child(10) { --rotation: 231.3deg; animation-delay: 2.1s; }
+.petal:nth-child(11) { --rotation: 257deg; animation-delay: 2.2s; }
+.petal:nth-child(12) { --rotation: 282.7deg; animation-delay: 2.3s; }
+.petal:nth-child(13) { --rotation: 308.4deg; animation-delay: 2.4s; }
+.petal:nth-child(14) { --rotation: 334.1deg; animation-delay: 2.5s; }
+
+/* Tallo con más verde y detalle */
+.stem {
+    position: absolute;
+    bottom: clamp(-80px, -16vw, -120px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(7px, 1.4vw, 11px);
+    height: clamp(80px, 16vw, 120px);
+    background: linear-gradient(
+        to bottom, 
+        #32cd32 0%, 
+        #228b22 25%, 
+        #006400 50%, 
+        #004d00 75%, 
+        #003300 100%
+    );
+    border-radius: clamp(4px, 0.8vw, 6px);
+    box-shadow: 
+        2px 0 clamp(5px, 1vw, 8px) rgba(0,0,0,0.15),
+        inset clamp(1px, 0.3vw, 2px) 0 clamp(3px, 0.6vw, 5px) rgba(255,255,255,0.25);
+    position: relative;
+    animation: formStem 1.2s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.7s;
+    transform-origin: bottom;
+}
+
+.stem::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.4) 0%,
+        transparent 50%
+    );
+    border-radius: inherit;
+}
+
+/* Hojas más detalladas */
+.leaf {
+    position: absolute;
+    width: clamp(22px, 4vw, 35px);
+    height: clamp(14px, 2.5vw, 22px);
+    background: linear-gradient(
+        135deg, 
+        #90ee90 0%, 
+        #32cd32 30%, 
+        #228b22 60%, 
+        #006400 100%
+    );
+    border-radius: 0 85% 0 85%;
+    box-shadow: 
+        2px 2px clamp(4px, 0.8vw, 7px) rgba(0,0,0,0.15),
+        inset 0 0 clamp(3px, 0.6vw, 6px) rgba(255,255,255,0.25);
+    opacity: 0;
+    animation: formLeaf 1s ease-out forwards;
+}
+
+.leaf:first-of-type {
+    bottom: 60%;
+    right: -65%;
+    transform: rotate(40deg);
+    --rotation: 40deg;
+    animation-delay: 1s;
+}
+
+.leaf:last-of-type {
+    bottom: 40%;
+    left: -65%;
+    transform: rotate(-40deg);
+    --rotation: -40deg;
+    background: linear-gradient(
+        -135deg, 
+        #90ee90 0%, 
+        #32cd32 30%, 
+        #228b22 60%, 
+        #006400 100%
+    );
+    animation-delay: 1.2s;
+}
+
+.leaf::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1.5px;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 100, 0, 0.9) 50%,
+        transparent 100%
+    );
+    transform: translateY(-50%);
+}
+
+/* Mensaje de amor con diseño más elegante */
+.love-message {
+    background: rgba(255, 255, 255, 0.98);
+    padding: clamp(30px, 7vw, 60px);
+    border-radius: clamp(25px, 5vw, 35px);
+    max-width: min(90vw, 800px);
+    text-align: center;
+    box-shadow: 0 clamp(12px, 2.5vw, 25px) clamp(35px, 7vw, 60px) rgba(0,0,0,0.1);
+    backdrop-filter: blur(20px);
+    border: 3px solid rgba(76, 175, 80, 0.5);
+    animation: fadeInUp 2.5s ease-out 3s forwards;
+    opacity: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-message::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #4caf50, #66bb6a, #4caf50, #81c784);
+    border-radius: inherit;
+    z-index: -1;
+    animation: borderGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.love-text {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: #2e7d32;
+    line-height: 1.9;
+    margin-bottom: clamp(25px, 5vw, 35px);
+    text-align: justify;
+    text-justify: inter-word;
+    font-weight: 300;
+}
+
+.signature {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    color: #388e3c;
+    margin-top: clamp(25px, 5vw, 35px);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.1), 0 0 15px rgba(56, 142, 60, 0.5);
+}
+
+/* Distancia visual con colores más suaves */
+.distance-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: clamp(30px, 6vw, 50px) 0;
+    font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+    color: #2e7d32;
+    flex-wrap: wrap;
+    gap: clamp(20px, 4vw, 30px);
+    animation: fadeInUp 2.5s ease-out 3.5s forwards;
+    opacity: 0;
+}
+
+.person {
+    width: clamp(65px, 13vw, 95px);
+    height: clamp(65px, 13vw, 95px);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4caf50, #66bb6a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+    font-weight: 600;
+    position: relative;
+    animation: personPulse 3.5s infinite ease-in-out;
+    box-shadow: 0 clamp(5px, 1.2vw, 9px) clamp(18px, 4vw, 28px) rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.person:hover {
+    transform: scale(1.15);
+}
+
+.person::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+    z-index: -1;
+    animation: ripple 3.5s infinite;
+}
+
+@keyframes ripple {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+.connection-line {
+    width: clamp(160px, 28vw, 320px);
+    height: clamp(5px, 1vw, 7px);
+    background: linear-gradient(90deg, #4caf50, #ffd700, #66bb6a, #4caf50);
+    background-size: 200% 100%;
+    position: relative;
+    border-radius: clamp(3px, 0.6vw, 4px);
+    overflow: hidden;
+    animation: connectionFlow 3s infinite;
+    box-shadow: 0 clamp(3px, 0.6vw, 5px) clamp(10px, 2vw, 15px) rgba(0,0,0,0.15);
+}
+
+@keyframes connectionFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.click-instruction {
+    margin-top: clamp(30px, 6vw, 50px);
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    color: #2e7d32;
+    animation: bounce 2.5s infinite;
+    text-align: center;
+    font-weight: 500;
+    animation-delay: 5.5s;
+}
+
+/* Animaciones principales mejoradas */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes personPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-8px); }
+}
+
+/* Efectos especiales mejorados */
+.sunflower.clicked {
+    animation: bloomEnhanced 1.5s ease-out;
+}
+
+@keyframes bloomEnhanced {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.2) rotate(10deg); }
+    50% { transform: scale(1.3) rotate(20deg); }
+    75% { transform: scale(1.15) rotate(-5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.sparkle {
+    position: fixed;
+    width: clamp(5px, 1.2vw, 9px);
+    height: clamp(5px, 1.2vw, 9px);
+    background: radial-gradient(circle, #ffd700 0%, #ffed4e 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkleEnhanced 2.5s ease-out forwards;
+    box-shadow: 0 0 clamp(10px, 2.5vw, 18px) #ffd700;
+    z-index: 1000;
+}
+
+@keyframes sparkleEnhanced {
+    0% {
+        opacity: 1;
+        transform: scale(0) rotate(0deg);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(2) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(360deg) translateY(-100px);
+    }
+}
+
+/* RESPONSIVIDAD MEJORADA */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px 20px;
+        gap: 30px;
+    }
+    
+    .sunflowers-layout {
+        gap: 20px;
+    }
+    
+    .sunflower {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .flower-center {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .petal {
+        width: 38px;
+        height: 76px;
+    }
+    
+    .love-text {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+        gap: 25px;
+    }
+    
+    .sunflowers-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .distance-animation {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .connection-line {
+        transform: rotate(90deg);
+        width: 90px;
+    }
+    
+    .sunflower {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .flower-center {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .petal {
+        width: 30px;
+        height: 60px;
+    }
+    
+    .love-message {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 360px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .sunflower {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .flower-center {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .petal {
+        width: 26px;
+        height: 52px;
+    }
+}
+
+/* Modo paisaje para móviles mejorado */
+@media (max-height: 600px) and (orientation: landscape) {
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 25px;
+    }
+    
+    .title {
+        width: 100%;
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    
+    .sunflowers-layout {
+        flex: 0 0 auto;
+        margin: 15px;
+        justify-content: flex-end;
+    }
+    
+    .sunflower {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .love-message {
+        flex: 1;
+        min-width: 350px;
+        margin: 15px;
+        padding: 25px;
+    }
+    
+    .distance-animation {
+        width: 100%;
+        margin: 20px 0;
+    }
+}
